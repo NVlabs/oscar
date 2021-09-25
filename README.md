@@ -62,7 +62,23 @@ That's it!
 Provided are helpful scripts for running training, evaluation, and finetuning. These are found in the [Examples](./examples) directory. You can set the Task, Controller, and other parameters directly at the top of the example script. They should run out of the box, like so:
 
 ```bash
+cd examples
 bash train.sh
+```
+
+For evaluation (including zero-shot), you can modify and run:
+```bash
+bash eval.sh
+```
+
+For finetuning on the published out-of-distribution task settings using a pretrained model, you can modify and run:
+```bash
+bash finetune.sh
+```
+
+To pretrain the initial OSCAR base network, you can modify and run:
+```bash
+bash pretrain_oscar.sh
 ```
 
 ## Reproducing Paper Results

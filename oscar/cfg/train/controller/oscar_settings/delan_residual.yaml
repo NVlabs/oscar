@@ -1,0 +1,10 @@
+env:
+  policy_controller:
+    controller_config:
+      delan:
+        use_extrinsics: True
+        extrinsics_with_residual: True
+        learn_residual: True
+        freeze_base: True
+        freeze_extrinsics: False
+        freeze_residual: False

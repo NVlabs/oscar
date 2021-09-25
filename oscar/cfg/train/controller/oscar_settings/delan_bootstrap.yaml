@@ -1,0 +1,9 @@
+env:
+  agent:
+    use_gravity_compensation: True
+  policy_controller:
+    controller_config:
+      delan:
+        use_ground_truth_mm: True
+        use_compensation_torques: False
+        use_offset_torques: False

@@ -1,0 +1,33 @@
+env:
+  sim:
+    # Note: using 2 substeps sometimes is required for better grasping behavior, but 1 is faster
+    dt: 0.02
+    substeps: 2
+    headless: True
+    physics_engine: 0             # 0 - physx, 1 - flex
+    graphics_device: 0            # Which CUDA-enabled GPU to use for rendering
+    compute_device: 0             # Which CUDA-enabled GPU to use for simulation
+    device: 0                     # Device to map tensors to. 0+ corresponds to valid CUDA device, -1 corresopnds to CPU
+    control_freq_inv: 1           # How many sim steps we take for a single step() call
+    render_every_n_steps: 1     # this may be overwritten at runtime
+    up_axis_str: "z"              # Which axis corresponds to "up" direction -- can be "y", or "z"
+    enable_viewer_sync: True      # Whether to step graphics at every step to synchronize viewer (if active)
+    img_dim: 480                  # Image dimension for rendering to frame
+    subscenes: 0                  # Number of PhysX subscenes to simulate in parallel
+    slices: null                     # Number of client threads that process env slices. If null, automatically sets this to number of subspaces
+    physx:
+      num_threads: 4              # Number of threads used by physx
+      solver_type: 1  # 0: pgs, 1: tgs
+      num_position_iterations: 12
+      num_velocity_iterations: 1 #0
+      contact_offset: 0.005
+      rest_offset: 0.0
+      bounce_threshold_velocity: 0.2
+      max_depenetration_velocity: 10.0
+      default_buffer_size_multiplier: 5.0
+      always_use_articulations: False
+    flex:
+      num_outer_iterations: 4
+      num_inner_iterations: 15
+      warm_start: 0.8
+      relaxation: 0.75

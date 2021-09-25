@@ -1,0 +1,32 @@
+env:
+  agent:
+    type: "franka_pitcher"
+    min_body_inertia: [ 0.001, 0.01 ]
+    pitcher_size: [ 0.06, 0.12 ]                          # radius, height
+    pitcher_thickness: 0.015
+    pitcher_mass: 0.5
+    pitcher_shape: "round"
+    transparent_walls: True
+    use_lid: True
+    disable_gravity: False                                              # whether to disable gravity for this agent or not
+    use_gravity_compensation: True
+    observations: [ "eef_base_pos", "eef_base_y_axis", "eef_base_z_axis" ]
+    dof_arm_mode: __AUTO__                      # Auto-filled in based on control mode type
+    dof_default: [0, 0.1963, 0, -2.6180, 0, 2.9416, 0.7854]
+    dof_lower_limits: [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, -0.0175, -2.8973]
+    dof_upper_limits: [ 2.8973,  1.7628,  2.8973, -0.0698,  2.8973,  3.7525,  2.8973]
+    dof_max_velocities: [ 2.6180, 2.6180, 2.6180, 2.6180, 3.1416, 3.1416, 3.1416 ]
+    dof_max_efforts: [87., 87., 87., 87., 12., 12., 12.]
+    dof_stiffness: __AUTO__                                                         # Auto-filled in based on control mode type
+    dof_stiffness_pos: [ 400., 400., 400., 400., 400., 400., 400. ]                          # Stiffness if we're using position control
+    dof_stiffness_effort: [ 0, 0, 0, 0, 0, 0, 0 ]                       # Stiffness if we're using effort control
+    dof_damping_min: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_friction_min: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] #[ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_armature_min: [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ]
+    dof_arm: 7
+    eef_action_dim: 0                           # Action dimension for any eef components
+    denormalize_control: __AUTO__               # Will automatically be updated based on whether the controller is set to normalize_control=True
+    history_length: 1                           # How much history of q, qd, control values to store

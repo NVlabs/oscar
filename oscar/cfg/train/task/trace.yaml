@@ -1,0 +1,69 @@
+policy:
+  params:
+    config:
+      max_epochs: 4000
+
+env:
+  task:
+    metric_rewards: False
+    name: Trace
+    numEnvs: 2048
+    envSpacing: 1.5
+    episodeLength: 600
+    enableDebugVis: False
+
+    observation_noise: 0.0                     # Observation noise (fraction)
+    agent_pos_noise: 0.0
+    agent_rot_noise: 0.0
+
+    randomize: False
+
+    startPositionNoise: 0.1                # Magnitude of random (x,y) position
+    startRotationNoise: 3.14               # Mangitude of random (z-) rotation
+
+    aggregateMode: 3                      # How to group actors together for performance boost. 3 = all actors, 2 = table + cubes, 1 = just cubes
+
+    actionScale: 1.0
+
+    # Reward info
+    r_dist_scale: 1.0
+    r_ori_scale: 1.0
+
+    steps_per_path: 300
+
+    path_type: "circle"
+    path_args:
+        center_pos: [ 0, 0, 1.5 ]
+        plane: ["y", "z"]
+        randomize_axes: True
+        radius: 0.25
+        radius_noise: 0.1
+        center_pos_noise: 0.1
+        center_rot_noise: 0.25
+        circle_tilt_noise: 0.785
+
+    clip_observations: 5.0
+    clip_actions: 1.0
+
+    n_balls: 1
+    ball_shape: "sphere"                    # Box or cylinder
+    ball_density: [ 500., 5000. ]
+    ball_size: 0.04                         # sphere radius
+
+    observations: ["goal_pos", "goal_ori_eef_axis", "goal_ori_jaw_axis"]
+    n_frames_stack: 3
+
+  agent:
+    type: "franka_pitcher"
+    min_body_inertia: [ 0.001, 0.01 ]
+    pitcher_size: [ 0.06, 0.12 ]                          # radius, height
+    pitcher_thickness: 0.015
+    pitcher_mass: 0.5
+    pitcher_shape: "round"
+    transparent_walls: False
+    use_lid: True
+    disable_gravity: False                                              # whether to disable gravity for this agent or not
+    observations: [ "eef_base_pos", "eef_base_y_axis", "eef_base_z_axis" ]
+    n_frames_stack: 3
+    dof_arm_mode: __AUTO__                      # Auto-filled in based on control mode type
+    dof_default: [0, 0.1963, 0, -2.6180, 0, 2.9416, 0.7854]

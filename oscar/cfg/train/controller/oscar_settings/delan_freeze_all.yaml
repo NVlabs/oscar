@@ -1,0 +1,7 @@
+env:
+  policy_controller:
+    controller_config:
+      delan:
+        freeze_base: True
+        freeze_extrinsics: True
+        freeze_residual: True

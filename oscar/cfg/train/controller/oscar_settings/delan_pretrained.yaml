@@ -1,0 +1,5 @@
+env:
+  policy_controller:
+    controller_config:
+      delan:
+        pretrained_model: null # TODO: You can fill in this value here (absolute fpath to .pth file) and load the config directly!

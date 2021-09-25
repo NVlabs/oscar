@@ -1,0 +1,45 @@
+env:
+  task:
+    episodeLength: 600
+    observation_noise: 0.0                     # Observation noise (fraction)
+    agent_pos_noise: 0.0
+    agent_rot_noise: 0.0
+
+    startPositionNoise: 0.1                # Magnitude of random (x,y) position
+    startRotationNoise: 3.14               # Mangitude of random (z-) rotation
+
+    steps_per_path: 150
+
+    path_type: "square"
+    path_args:
+      center_pos: [ 0, 0.1, 1.5 ]
+      #        center_quat: [0, 0, 0.707, 0.707]
+      plane: [ "y", "z" ]
+      randomize_axes: False # True
+      half_size: 0.2
+      half_size_noise: 0.1
+      center_pos_noise: 0.05
+      center_rot_noise: 0.025
+      square_tilt_noise: 0.1
+
+    n_balls: 1
+    ball_shape: "sphere"                    # Box or cylinder
+    ball_density: [ 10000., 10000. ]
+    ball_size: 0.04                         # sphere radius
+
+  agent:
+    min_body_inertia: [ 0.001, 0.001 ]
+    pitcher_size: [ 0.08, 0.15 ]                          # radius, height
+    pitcher_thickness: 0.015
+    pitcher_mass: 0.5
+    dof_damping_min: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_friction_min: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ]
+    dof_armature_min: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ] # [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ]
+
+  policy_controller:
+    controller_config:
+      delan:
+        pretrained_model: null          # So that the "before" pretrained model doesn't override the newest

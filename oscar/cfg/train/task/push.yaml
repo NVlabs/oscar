@@ -1,0 +1,65 @@
+policy:
+  params:
+    config:
+      max_epochs: 8000
+
+env:
+  task:
+    metric_rewards: False
+    name: Push
+    numEnvs: 2048
+    envSpacing: 1.5
+    episodeLength: 300
+    enableDebugVis: False
+
+    observation_noise: 0.0                     # Observation noise (fraction)
+    agent_pos_noise: 0.0
+    agent_rot_noise: 0.0
+
+    randomize: False
+
+    startPositionNoise: 0.01                # Magnitude of random (x,y) position
+    startRotationNoise: 0.785               # Magnitude of random (z-) rotation
+
+    aggregateMode: 3                      # How to group actors together for performance boost. 3 = all actors, 2 = table + pucks, 1 = just pucks
+
+    actionScale: 1.0
+
+    # Reward info
+    r_reach_scale: 0.1
+    r_contact_scale: 0.05
+    r_press_scale: 0.1
+    r_path_scale: 5.0
+    r_goal_scale: 10.0
+
+    clip_observations: 5.0
+    clip_actions: 1.0
+
+    observations: ["puck_tilt", "puck_pos", "puck_to_target", "proportion_completed"]
+    n_frames_stack: 3
+
+    path_bounds: [0.27, 0.55]             # (l,w)
+    path_width: 0.09                     # Should evenly divide into the table width size
+    path_incline: 0.0                   # radians
+    path_friction: [0.2, 2.0]           # (min, max) surface friction for path
+    path_shape: "bend1"                 # options are {straight, bend1}
+    path_kwargs:
+      bend_size: 2
+
+    puck_size: [0.065, 0.075]         # size of puck (l=w=h)
+    puck_density: [1000, 10000]
+    puck_friction: [0.2, 2.0]
+
+  agent:
+    type: "franka"
+    min_body_inertia: [ 0.001, 0.01 ]
+    use_eef_weight: True                                                # whether to use eef weight or not
+    eef_type: "box"                    # options are {sphere, cylinder, box}
+    eef_size: [0.055, 0.055, 0.04]                          # for {sphere: [radius], cylinder: [width, height], box: [l, w, h]}
+    randomize_eef_weight: True
+    eef_mass: [0.1, 2.0]                                                      # Either range if randomizing weight or single value otherwise
+    disable_gravity: False                                              # whether to disable gravity for this agent or not
+    observations: [ "eef_pos", "eef_quat" ]
+    n_frames_stack: 3
+    dof_arm_mode: __AUTO__                      # Auto-filled in based on control mode type
+    dof_default: [0, 0.0, 0, -2.6180, 0, 2.9416, 0.7854]

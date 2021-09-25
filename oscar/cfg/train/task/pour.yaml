@@ -1,0 +1,61 @@
+policy:
+  params:
+    config:
+      max_epochs: 8000
+
+env:
+  task:
+    metric_rewards: False
+    name: Pour
+    numEnvs: 2048
+    envSpacing: 1.5
+    episodeLength: 150
+    enableDebugVis: False
+
+    observation_noise: 0.0                     # Observation noise (fraction)
+    agent_pos_noise: 0.0
+    agent_rot_noise: 0.0
+
+    randomize: False
+
+    startPositionNoise: 0.15                # Magnitude of random (x,y) position
+    startRotationNoise: 3.14                # Mangitude of random (z-) rotation
+    xy_offset: [0.10, 0.0]                   # xy-offset from center of table for determining sampling center
+
+    aggregateMode: 3                        # How to group actors together for performance boost. 3 = all actors, 2 = table + cubes, 1 = just cubes
+
+    actionScale: 1.0
+
+    # Reward info
+    r_dist_scale: 1.0
+    r_reach_scale: 0.0
+    r_tilt_scale: 0.0
+    r_fill_scale: 9.0
+    r_miss_scale: 0.0
+
+    clip_observations: 5.0
+    clip_actions: 1.0
+
+    observations: ["cup_pos", "cup_radius", "cup_height", "fill_frac", "miss_frac", "cup_tilt"]
+    n_frames_stack: 3
+
+    cup_size: [[0.045, 0.065], [0.1, 0.2]]                   # (radius(/range), height(/range))
+    cup_thickness: 0.005
+    cup_mass: 1.0
+    randomize_cup: True                     # Whether to randomize cup sizes or not
+    n_balls: 10
+    ball_density: [1000., 20000.]
+    ball_size: 0.011                         # sphere radius
+
+  agent:
+    type: "franka_pitcher"
+    min_body_inertia: [ 0.001, 0.01 ]
+    pitcher_size: [0.05, 0.18]                          # radius, height
+    pitcher_thickness: 0.005
+    pitcher_mass: 0.5
+    pitcher_shape: "round"
+    transparent_walls: False
+    use_lid: False
+    observations: [ "eef_pos", "eef_quat", "pitcher_tilt" ]
+    n_frames_stack: 3
+    dof_default: [ 0, 0.1963, 0, -2.6180, 0, 3.3416, 0.7854 ]

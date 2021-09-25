@@ -1,0 +1,20 @@
+env:
+  policy_controller:
+    type: robot_arm
+    agent_config: __AUTO__
+    n_envs: __AUTO__
+    device: __AUTO__
+    control_freq: null                            # If not set, will automatically be set to the sim freq
+    control_steps_per_policy_step: __AUTO__
+    normalize_actions: True
+    controller_config:
+      type: osc
+      input_min: -1.0
+      input_max: 1.0
+      output_min: [ -0.1, -0.1, -0.1, -0.5, -0.5, -0.5 ]
+      output_max: [ 0.1, 0.1, 0.1, 0.5, 0.5, 0.5 ]
+      kp: null
+      kp_null: 10.0
+      damping_ratio: null
+      decouple_pos_ori: False
+      control_noise: 0.0                          # control noise (fraction)

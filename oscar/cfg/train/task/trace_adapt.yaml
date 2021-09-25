@@ -1,0 +1,47 @@
+policy:
+  params:
+    load_optimizer_state: False
+    config:
+      max_epochs: 1000
+      steps_num: 1024
+      minibatch_size: 512
+      mini_epochs: 4
+
+env:
+  task:
+    numEnvs: 4
+    episodeLength: 500
+
+    steps_per_path: 500
+    visualize_path: False
+
+    use_pre_post_points: True
+
+    path_type: "custom"
+    path_args:
+      fpath: "images/robot_cursive.svg"
+      center_pos: [ 0, 0.1, 1.5 ]
+      plane: [ "y", "z" ]
+      randomize_axes: False
+      size: [0.8, 0.4]
+      size_noise: [0.01, 0.01]
+      center_pos_noise: 0.01
+      center_rot_noise: 0.01
+      tilt_noise: 0.1
+
+    n_balls: 1
+    ball_shape: "sphere"                    # Box or cylinder
+    ball_density: [ 10000., 10000. ]
+    ball_size: 0.04                         # sphere radius
+
+  agent:
+    min_body_inertia: [ 0.001, 0.001 ]
+    pitcher_size: [ 0.08, 0.15 ]                          # radius, height
+    pitcher_thickness: 0.015
+    pitcher_mass: 0.5
+    dof_damping_min: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_friction_min: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ]
+    dof_armature_min: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ] # [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ]

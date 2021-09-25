@@ -1,0 +1,26 @@
+env:
+  task:
+    startPositionNoise: 0.15                # Magnitude of random (x,y) position
+    startRotationNoise: 3.14                # Mangitude of random (z-) rotation
+    xy_offset: [0.10, 0.0]                   # xy-offset from center of table for determining sampling center
+
+    cup_size: [[0.05, 0.05], [0.1, 0.1]]                   # (radius(/range), height(/range))
+    cup_thickness: 0.005
+    cup_mass: 1.0
+    randomize_cup: True                     # Whether to randomize cup sizes or not
+    n_balls: 20
+    ball_density: [20000., 20000.]
+    ball_size: 0.011                         # sphere radius
+
+  agent:
+    type: "franka_pitcher"
+    min_body_inertia: [ 0.001, 0.01 ]
+    pitcher_size: [0.06, 0.18]                          # radius, height
+    pitcher_thickness: 0.005
+    pitcher_mass: 0.75
+    dof_damping_min: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_friction_min: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ]
+    dof_armature_min: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ] # [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ]

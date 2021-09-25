@@ -1,0 +1,74 @@
+policy:
+  params:
+    config:
+      max_epochs: 4000
+
+env:
+  task:
+    name: Trace
+    numEnvs: 2048
+    envSpacing: 1.5
+    episodeLength: 400
+    enableDebugVis: False
+
+    observation_noise: 0.0                     # Observation noise (fraction)
+    agent_pos_noise: 0.0
+    agent_rot_noise: 0.0
+
+    randomize: False
+
+    startPositionNoise: 0.1                # Magnitude of random (x,y) position
+    startRotationNoise: 3.14               # Mangitude of random (z-) rotation
+
+    aggregateMode: 3                      # How to group actors together for performance boost. 3 = all actors, 2 = table + cubes, 1 = just cubes
+
+    actionScale: 1.0
+
+    # Reward info
+    r_dist_scale: 1.0
+    r_ori_scale: 1.0
+
+    steps_per_path: 100
+
+    path_type: "straight"
+    path_args:
+        center_pos: [ 0, 0, 1.5 ]
+        pos_range: [0.3, 0.3, 0.3]
+        rot_range: 0.785
+        timestep_range: 50
+        pause_steps: 10
+        pause_range: 5
+        center_pos_noise: 0.1
+        center_rot_noise: 0.25
+
+    clip_observations: 5.0
+    clip_actions: 1.0
+
+    n_balls: 1
+    ball_shape: "sphere"                    # Box or cylinder
+    ball_density: [ 500., 10000. ]
+    ball_size: 0.04                         # sphere radius
+
+    observations: ["goal_pos", "goal_ori_eef_axis", "goal_ori_jaw_axis"]
+    n_frames_stack: 3
+
+  agent:
+    type: "franka"
+    min_body_inertia: [ 0.001, 0.001 ]
+    use_eef_weight: False                                                # whether to use eef weight or not
+    eef_type: "sphere"                    # options are {sphere, cylinder, box}
+    eef_size: [ 0.05 ]                          # for {sphere: [radius], cylinder: [width, height], box: [l, w, h]}
+    randomize_eef_weight: True
+    eef_mass: [ 0.05, 2.0 ]                                                      # Either range if randomizing weight or single value otherwise
+    disable_gravity: False                                              # whether to disable gravity for this agent or not
+    observations: [ "eef_base_pos", "eef_base_y_axis", "eef_base_z_axis" ]
+    n_frames_stack: 3
+    dof_arm_mode: __AUTO__                      # Auto-filled in based on control mode type
+    dof_default: [ 0, 0.1963, 0, -2.6180, 0, 2.9416, 0.7854 ]
+
+    dof_damping_min: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_min: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_armature_min: [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]

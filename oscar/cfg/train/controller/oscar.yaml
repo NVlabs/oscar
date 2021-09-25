@@ -1,0 +1,67 @@
+env:
+  agent:
+    history_length: 25                          # How much history of q, qd, control values to store
+    use_gravity_compensation: False
+  policy_controller:
+    type: robot_arm
+    agent_config: __AUTO__
+    n_envs: __AUTO__
+    device: __AUTO__
+    control_freq: null                            # If not set, will automatically be set to the sim freq
+    control_steps_per_policy_step: __AUTO__
+    normalize_actions: True
+    controller_config:
+      type: oscar
+      input_min: -1.0
+      input_max: 1.0
+      output_min: [ -0.1, -0.1, -0.1, -0.5, -0.5, -0.5 ]
+      output_max: [ 0.1, 0.1, 0.1, 0.5, 0.5, 0.5 ]
+      kp: null
+      kp_null: 10.0
+      damping_ratio: null
+      decouple_pos_ori: False
+      control_noise: 0.0                          # control noise (fraction)
+      actor_loss_scale: 1.0
+      delan:
+        n_width: 128
+        n_depth: 3
+        embed_q: True
+        use_extrinsics: False
+        use_ground_truth_mm: False
+        extrinsics_with_residual: True
+        bootstrap_extrinsics: True
+        steps_per_extrinsics_update: 1
+        extrinsics_net_kwargs:
+          mlp_hidden_dims: [512, 256, 128]
+          use_cnn: False
+          cnn_input_channels: [32, 32, 32]
+          cnn_output_channels: [32, 32, 32]
+          cnn_kernels: [4, 5, 5]
+          cnn_strides: [2, 1, 1]
+        extrinsics_latent_dim: 8
+        use_compensation_torques: True
+        diagonal_epsilon: 0.001
+        activation: ReLu
+        diag_activation: Exp
+        b_init: 1.0e-4
+        w_init: xavier_normal
+        g_hidden: 1.41
+        g_output: 0.1
+        lr: 1.0e-4
+        weight_decay: 1.0e-5
+        max_grad_norm: 2.0
+        loss_threshold: 1.0e+10
+        train_with_actor_loss: False
+        train_with_forward_loss: True
+        pretrained_model: null
+        learn_residual: False
+        max_residual_magnitude: 0.1
+        use_tanh_residual_output: True
+        use_exponential_residual: True
+        n_width_residual: 64
+        n_depth_residual: 3
+        b_init_residual: 0.0
+        b_diag_init_residual: 0.0
+        freeze_base: False
+        freeze_extrinsics: False
+        freeze_residual: False

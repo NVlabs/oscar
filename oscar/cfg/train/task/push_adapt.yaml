@@ -1,0 +1,43 @@
+policy:
+  params:
+    network:
+      space:
+        continuous:
+          sigma_init:
+            name: const_initializer
+            val: -2.0
+    load_optimizer_state: False
+    config:
+      max_epochs: 1000
+      steps_num: 1024
+      minibatch_size: 512
+      mini_epochs: 4
+
+env:
+  task:
+    numEnvs: 4
+
+    path_bounds: [0.24, 0.49]             # (l,w)
+    path_width: 0.08                     # Should evenly divide into the table width size
+    path_incline: 0.1                   # radians
+    path_friction: [4.0, 4.0]           # (min, max) surface friction for path
+    path_shape: "bend1"                 # options are {straight, bend1}
+    path_kwargs:
+      bend_size: 2
+
+    puck_size: [0.075, 0.075]         # size of puck (l=w=h)
+    puck_density: [20000, 20000]
+    puck_friction: [2.5, 2.5]
+
+  agent:
+    min_body_inertia: [ 0.001, 0.001 ]
+    eef_type: "box"                    # options are {sphere, cylinder, box}
+    eef_size: [ 0.055, 0.055, 0.04 ]                          # for {sphere: [radius], cylinder: [width, height], box: [l, w, h]}
+    randomize_weight: False
+    eef_mass: [2.0, 2.0]
+    dof_damping_min: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_friction_min: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ]
+    dof_armature_min: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ] # [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ]

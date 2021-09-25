@@ -1,0 +1,15 @@
+name: oscar
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - pip
+  - cudatoolkit=11.1
+  - pyyaml>=5.3.1
+  - scipy>=1.5.0
+  - tensorboard>=2.2.1
+  - pip:
+    - torch==1.9.0        # Install through pip so package name is "torch", not "pytorch"
+    - torchvision==0.10.0

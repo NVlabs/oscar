@@ -1,0 +1,40 @@
+policy:
+  params:
+    network:
+      space:
+        continuous:
+          sigma_init:
+            name: const_initializer
+            val: -2.0
+    load_optimizer_state: False
+    config:
+      max_epochs: 1000
+      steps_num: 1024
+      minibatch_size: 512
+      mini_epochs: 4
+
+env:
+  task:
+    metric_rewards: False
+    numEnvs: 4
+
+    cup_size: [[0.05, 0.05], [0.15, 0.15]]                   # (radius(/range), height(/range))
+    cup_thickness: 0.005
+    cup_mass: 1.0
+    randomize_cup: True                     # Whether to randomize cup sizes or not
+    n_balls: 100
+    ball_density: [20000., 20000.]
+    ball_size: 0.0075                         # sphere radius
+
+  agent:
+    type: "franka_pitcher"
+    min_body_inertia: [ 0.001, 0.001 ]
+    pitcher_size: [0.06, 0.18]                          # radius, height
+    pitcher_thickness: 0.005
+    pitcher_mass: 0.75
+    dof_damping_min: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_damping_max: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+    dof_friction_min: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ]
+    dof_friction_max: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 ] # [ 0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ] # [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] # [ 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12 ]
+    dof_armature_min: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ]
+    dof_armature_max: [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ] # [ 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002, 0.0002 ] # [ 0.005, 0.005, 0.005, 0.005, 0.005, 0.005, 0.005 ]

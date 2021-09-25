@@ -1,5 +1,8 @@
 """Setup script for oscar"""
 from setuptools import setup, find_packages
+import os
+
+root_dir = os.path.dirname(os.path.realpath(__file__))
 
 setup(
     name='oscar',
@@ -25,5 +28,6 @@ setup(
         "isaacgym",
         "trimesh",
         "matplotlib",
+        f"rl_games @ file://localhost{root_dir}/oscar/rl_games",
     ],
 )

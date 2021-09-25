@@ -90,7 +90,7 @@ This repo is designed to be built upon and enable future large-scale robot learn
 ## License
 Please check the [LICENSE](./LICENSE.txt) file. OSCAR may be used non-commercially, meaning for research or evaluation purposes only. For business inquiries, please contact researchinquiries@nvidia.com.
 
-## Citations
+## Citation
 Please cite [**OSCAR**](https://cremebrule.github.io/oscar-web) if you use this framework in your publications:
 ```bibtex
 @inproceedings{wong2020oscar,

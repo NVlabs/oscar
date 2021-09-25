@@ -38,7 +38,7 @@ bash create_conda_env_oscar.sh
 conda activate oscar
 ```
 
-This will create a new conda environment named `oscar` and additional install some dependencies. Next, we need IsaacGym. This repo itself does not contain IsaacGym, but is compatible with any version > preview 3.0.
+This will create a new conda environment named `oscar` and additional install some dependencies. Next, we need IsaacGym. This repo itself does not contain IsaacGym, but is compatible with any version >= preview 3.0.
 
 Install and build IsaacGym [HERE](https://developer.nvidia.com/isaac-gym).
 
@@ -83,6 +83,9 @@ bash pretrain_oscar.sh
 
 ## Reproducing Paper Results
 We provide all of our final trained models used in our published results, found in [trained_models](./trained_models) section.
+
+## Adding Custom Modules
+This repo is designed to be built upon and enable future large-scale robot learning simulation research. You can add your own custom controller by seeing an example controller like the [OSC](./oscar/controllers/osc.py) controller, your own custom robot agent by seeing an example agent like the [Franka](./oscar/agents/franka.py) agent, and your own custom task by seeing an example task like the [Push](./oscar/tasks/push.py) task. 
 
 ## License
 Please check the [LICENSE](./LICENSE.txt) file. OSCAR may be used non-commercially, meaning for research or evaluation purposes only. For business inquiries, please contact researchinquiries@nvidia.com.

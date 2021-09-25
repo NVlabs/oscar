@@ -1,4 +1,14 @@
-## OSCAR
+[![NVIDIA Source Code License](https://img.shields.io/badge/license-NSCL-blue.svg)](https://github.com/NVlabs/oscar/blob/master/LICENSE)
+![Python 3.7](https://img.shields.io/badge/python-3.7-green.svg)
+
+# OSCAR
+
+<div align="center">
+  <img src="./resources/main_fig.png" height="400">
+</div>
+
+### [Project Page](https://cremebrule.github.io/oscar-web) | [Paper](https://arxiv.org/abs/TBD)
+
 This repository contains the codebase used in [**OSCAR: Data-Driven Operational Space Control for Adaptive and Robust Robot Manipulation**](https://cremebrule.github.io/oscar-web).
 
 More generally, this codebase is a modular framework built upon [IsaacGym](https://developer.nvidia.com/isaac-gym), and intended to support future robotics research leveraging large-scale training.
@@ -57,6 +67,9 @@ bash train.sh
 
 ## Reproducing Paper Results
 We provide all of our final trained models used in our published results, found in [trained_models](./trained_models) section.
+
+## License
+Please check the [LICENSE](./LICENSE.txt) file. OSCAR may be used non-commercially, meaning for research or evaluation purposes only. For business inquiries, please contact researchinquiries@nvidia.com.
 
 ## Citations
 Please cite [**OSCAR**](https://cremebrule.github.io/oscar-web) if you use this framework in your publications:

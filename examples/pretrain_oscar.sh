@@ -3,13 +3,14 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
+CONDA_PATH=~/anaconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
 EPOCHS=0            # 0 results in default, else manually sets value
 
 ####################################################################
 ##### YOU SHOULDN'T HAVE TO TOUCH ANYTHING BELOW THIS POINT :) #####
 
 # Setup env variables
-export LD_LIBRARY_PATH=~/anaconda3/envs/oscar/lib/
+export LD_LIBRARY_PATH=${CONDA_PATH}
 export CUDA_VISIBLE_DEVICES=0
 
 # Setup python interpreter

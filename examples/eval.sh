@@ -3,7 +3,8 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
-TASK=push                              # Options are: {trace, pour, push}
+CONDA_PATH=~/anaconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
+TASK=push                               # Options are: {trace, pour, push}
 CONTROLLER=oscar                        # Options are: {oscar, osc, osc_no_vices, ik, joint_tor, joint_vel, joint_pos}
 N_ENVS=4                                # Number of test environments to use
 N_EPISODES=40                           # Number of test episodes to use
@@ -15,7 +16,7 @@ TEST_ZERO_SHOT=false                    # Either {true, false}; whether to test 
 ##### YOU SHOULDN'T HAVE TO TOUCH ANYTHING BELOW THIS POINT :) #####
 
 # Setup env variables
-export LD_LIBRARY_PATH=~/anaconda3/envs/oscar/lib/
+export LD_LIBRARY_PATH="${CONDA_PATH}"
 export CUDA_VISIBLE_DEVICES=0
 
 # Setup python interpreter

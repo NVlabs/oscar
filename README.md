@@ -1,5 +1,5 @@
 ## OSCAR
-This repository contains the codebase used in [OSCAR: Data-Driven Operational Space Control for Adaptive and Robust Robot Manipulation](arxiv_link_TODO).
+This repository contains the codebase used in [**OSCAR: Data-Driven Operational Space Control for Adaptive and Robust Robot Manipulation**](https://cremebrule.github.io/oscar-web).
 
 More generally, this codebase is a modular framework built upon [IsaacGym](https://developer.nvidia.com/isaac-gym), and intended to support future robotics research leveraging large-scale training.
 
@@ -14,15 +14,16 @@ Of note, this repo contains:
 - NVIDIA GPU + CUDA
 
 ## Getting Started
-First, clone this repo:
+First, clone this repo and initialize the submodules:
 
 ```bash
 git clone https://github.com/NVlabs/oscar.git
+cd oscar
+git submodule update --init --recursive
 ```
 
 Next, create a new conda environment to be used for this repo and activate the repo:
 ```bash
-cd oscar
 bash create_conda_env_oscar.sh
 conda activate oscar
 ```
@@ -34,54 +35,36 @@ Install and build IsaacGym [HERE](https://developer.nvidia.com/isaac-gym).
 Once installed, navigate to the python directory and install the package to this conda environment:
 
 ```bash
-cd <ISAACGYM_REPO_PATH>/python
-pip install -e .
+(oscar) cd <ISAACGYM_REPO_PATH>/python
+(oscar) pip install -e .
 ```
 
 Now with IsaacGym installed, we can finally install this repo as a package:
 
 ```bash
-cd <OSCAR_REPO_PATH>
-pip install -e .
+(oscar) cd <OSCAR_REPO_PATH>
+(oscar) pip install -e .
 ```
 
 That's it!
 
-## Prerequisites
+## Training
+Provided are helpful scripts for running training, evaluation, and finetuning. These are found in the [Examples](./examples) directory. You can set the Task, Controller, and other parameters directly at the top of the example script. They should run out of the box, like so:
 
-- Supported platforms are Linux (Ubuntu 16.04+) and Windows 10 (version 1809 is required).
+```bash
+bash train.sh
+```
 
-- Install Git and [Git LFS](https://github.com/git-lfs/git-lfs/wiki/Installation).
+## Reproducing Paper Results
+We provide all of our final trained models used in our published results, found in [trained_models](./trained_models) section.
 
-- If you wish to develop using Isaac Gym, you should [fork this repository](https://gitlab-master.nvidia.com/carbon-gym/carbgym/forks/new).
-  * Go to your newly created fork in GitLab, select
-      * go to "Settings->Repository->Mirroring repositories"
-          * set "Git repository URL" to https://gitlab-master.nvidia.com/carbon-gym/carbgym.git
-          * select "Pull" under "Mirror direction".
-          * clear out the text under "Password".
-          * check the "Overwrite diverged branches" checkbox.
-      * go to "Settings->General->Visibility, project features, permissions"
-          * ensure "Project Visibility" is set to "Public".
-  * Clone your fork to a local hard drive.  On Windows, make sure to use a NTFS drive.
-
-- If you just want to use Isaac Gym as-is, you can clone this repositiory directly to your hard drive (on Windows, make sure to use a NTFS drive).
-
-- On Ubuntu, you should run `./setup.sh` to install some prerequisite software.  This only needs to be done once. 
-
-
-## Building
-
-Execute `./build.sh` on Linux or `build.bat` on Windows.
-
-For building in Visual Studio you need VS 2017 with [SDK 10.17763+](https://go.microsoft.com/fwlink/?LinkID=2023014).
-
-The build output will be found in the generated `_build` folder and the make/solution 
-files will be found in the generated `_compiler` directory. 
-
-## Python
-
-See the [Python README](/python/README.md) for information on running the Python examples.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md).
+## Citations
+Please cite [**OSCAR**](https://cremebrule.github.io/oscar-web) if you use this framework in your publications:
+```bibtex
+@inproceedings{wong2020oscar,
+  title={OSCAR: Data-Driven Operational Space Control for Adaptive and Robust Robot Manipulation},
+  author={Josiah Wong and Viktor Makoviychuk and Anima Anandkumar and Yuke Zhu},
+  booktitle={arXiv preprint arXiv:TBD},
+  year={2021}
+}
+```

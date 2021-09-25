@@ -3,6 +3,7 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
+CONDA_PATH=~/anaconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
 TASK=trace                              # Options are: {trace, pour, push}
 CONTROLLER=oscar                        # Options are: {oscar, osc, osc_no_vices, ik, joint_tor, joint_vel, joint_pos}
 PRETRAINED_MODEL=default                # Should set this to absolute fpath to pretrained .pth file. Setting this to "default" results in default pretrained model being loaded
@@ -12,7 +13,7 @@ EPOCHS=default                          # Manually set value (int), or "default"
 ##### YOU SHOULDN'T HAVE TO TOUCH ANYTHING BELOW THIS POINT :) #####
 
 # Setup env variables
-export LD_LIBRARY_PATH=~/anaconda3/envs/oscar/lib/
+export LD_LIBRARY_PATH=${CONDA_PATH}
 export CUDA_VISIBLE_DEVICES=0
 
 # Setup python interpreter

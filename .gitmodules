@@ -1,4 +1,0 @@
-[submodule "oscar/rl_games"]
-	path = oscar/rl_games
-	url = https://github.com/cremebrule/rl_games.git
-	branch = oscar

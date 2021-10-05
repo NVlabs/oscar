@@ -7,7 +7,7 @@
   <img src="./resources/main_fig.png" height="400">
 </div>
 
-### [Project Page](https://cremebrule.github.io/oscar-web) | [Paper](https://arxiv.org/abs/TBD)
+### [Project Page](https://cremebrule.github.io/oscar-web) | [Paper](https://arxiv.org/abs/2110.00704)
 
 This repository contains the codebase used in [**OSCAR: Data-Driven Operational Space Control for Adaptive and Robust Robot Manipulation**](https://cremebrule.github.io/oscar-web).
 
@@ -93,10 +93,10 @@ Please check the [LICENSE](./LICENSE.txt) file. OSCAR may be used non-commercial
 ## Citation
 Please cite [**OSCAR**](https://cremebrule.github.io/oscar-web) if you use this framework in your publications:
 ```bibtex
-@inproceedings{wong2020oscar,
+@inproceedings{wong2021oscar,
   title={OSCAR: Data-Driven Operational Space Control for Adaptive and Robust Robot Manipulation},
   author={Josiah Wong and Viktor Makoviychuk and Anima Anandkumar and Yuke Zhu},
-  booktitle={arXiv preprint arXiv:TBD},
+  booktitle={arXiv preprint arXiv:2110.00704},
   year={2021}
 }
 ```

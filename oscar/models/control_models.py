@@ -420,11 +420,11 @@ class DynamicsModel(ControlModel):
 
             # Include DeLaN loss for learning inverse dynamics
             # Compute the Rigid Body Dynamics Model:
-            tau_hat, dEdt_hat, tau_fric_pred, tau_force_pred, qdd_hat = self.model(q, qd, qdd, tau, obs, j_eef, extrinsics, history_dict, get_qdd_pred=self.train_with_forward_loss)
+            tau_hat, dEdt_hat, qdd_hat = self.model(q, qd, qdd, tau, obs, j_eef, extrinsics, history_dict, get_qdd_pred=self.train_with_forward_loss)
             # Compute the loss of the Euler-Lagrange Differential Equation:
             err_inv = torch.sum((tau_hat - tau) ** 2, dim=1)
             # Compute the loss of the Power Conservation:
-            dEdt = torch.matmul(qd.view(-1, self.dof, 1).transpose(dim0=1, dim1=2), (tau + tau_fric_pred + tau_force_pred).view(-1, self.dof, 1)).view(-1)
+            dEdt = torch.matmul(qd.view(-1, self.dof, 1).transpose(dim0=1, dim1=2), (tau).view(-1, self.dof, 1)).view(-1)
             err_dEdt = (dEdt_hat - dEdt) ** 2
 
             # Compose loss

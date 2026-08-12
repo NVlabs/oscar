@@ -1,3 +1,5 @@
+### Note: This repo is **deprecated** and is not supported by NVIDIA and will not receive updates.
+
 [![NVIDIA Source Code License](https://img.shields.io/badge/license-NSCL-blue.svg)](https://github.com/NVlabs/oscar/blob/master/LICENSE.txt)
 ![Python 3.7](https://img.shields.io/badge/python-3.7-green.svg)
 
